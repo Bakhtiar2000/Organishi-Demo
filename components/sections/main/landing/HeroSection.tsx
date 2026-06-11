@@ -3,7 +3,7 @@ import { Leaf, ArrowRight, ShieldCheck } from "lucide-react";
 
 const HeroSection = () => {
   return (
-    <section className="bg-secondary relative overflow-hidden">
+    <section className="bg-white relative overflow-hidden">
       {/* Background decoration */}
       <div className="pointer-events-none absolute inset-0 opacity-5">
         <div className="bg-primary absolute -top-24 -right-24 h-96 w-96 rounded-full" />

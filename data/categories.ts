@@ -14,3 +14,19 @@ export const organicCategories: OrganiCategory[] = [
   { name: "Juices & Drinks", slug: "juices-drinks", emoji: "🧃" },
   { name: "Snacks", slug: "snacks", emoji: "🫐" },
 ];
+
+export interface ProductCategory {
+  name: string;
+  slug: string;
+}
+
+export const productCategories: ProductCategory[] = [
+  { name: "Honey", slug: "honey" },
+  { name: "Dry Food", slug: "dry-food" },
+  { name: "Mix Food", slug: "mix-food" },
+  { name: "Nuts & Seeds", slug: "nuts-seeds" },
+  { name: "Pickle (আচার)", slug: "pickle" },
+  { name: "Dates (খেজুর)", slug: "dates" },
+  { name: "Masala (মসলা কম্বো)", slug: "masala" },
+  { name: "Tea", slug: "tea" },
+];

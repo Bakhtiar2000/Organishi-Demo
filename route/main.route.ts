@@ -5,7 +5,7 @@ export interface RouteItem {
 
 export const mainRoutes: RouteItem[] = [
   { label: "Home", href: "/" },
-  { label: "Products", href: "/products" },
-  { label: "About", href: "/about" },
-  { label: "Contact", href: "/contact" },
+  { label: "Blog", href: "/blog" },
+  { label: "Combos", href: "/combos" },
+  { label: "Offers", href: "/offers" },
 ];
