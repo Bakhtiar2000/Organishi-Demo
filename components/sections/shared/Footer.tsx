@@ -2,6 +2,10 @@ import Image from "next/image";
 import Link from "next/link";
 import { Phone, Mail, ShieldCheck } from "lucide-react";
 import logo from "@/assets/logo/organishi_logo_dark_compact.png";
+import apple_pay from "@/assets/cards/apple_pay.png";
+import discover from "@/assets/cards/discover.png";
+import mastercard from "@/assets/cards/mastercard.png";
+import visa from "@/assets/cards/visa.png";
 
 const columns = [
   {
@@ -27,14 +31,15 @@ const Footer = () => {
     <footer className="bg-[#111316] text-gray-300">
       {/* Main grid */}
       <div className="container mx-auto px-4 py-12">
-        <div className="grid grid-cols-1 gap-10 lg:grid-cols-5">
+        <div className="grid grid-cols-1 gap-10 lg:grid-cols-8">
           {/* Brand column */}
-          <div className="lg:col-span-1">
+          <div className="lg:col-span-4">
             <Image src={logo} alt="Organishi" height={60} className="mb-4 h-14 w-auto" />
 
-            <p className="mb-6 text-sm leading-relaxed text-gray-400">
-              Morbi cursus porttitor enim lobortis molestie. Duis gravida turpis dui, eget bibendum
-              magna congue nec.
+            <p className="mb-6 text-sm leading-relaxed text-gray-400 w-100 ">
+              Finest organic products — sourced directly from trusted farmers and
+              delivered fresh to your door. Pure ingredients, honest sourcing, and a healthier
+              lifestyle starts here.
             </p>
 
             <div className="flex flex-wrap items-center gap-x-3 gap-y-1 text-sm">
@@ -90,22 +95,10 @@ const Footer = () => {
 
           {/* Payment badges */}
           <div className="flex items-center gap-2">
-            <span className="rounded border border-white/20 bg-white/5 px-2 py-0.5 text-[11px] font-semibold text-white">
-              Apple Pay
-            </span>
-            <span className="rounded border border-white/20 bg-white/5 px-2 py-0.5 text-[11px] font-bold italic text-blue-400">
-              VISA
-            </span>
-            <span className="rounded border border-white/20 bg-white/5 px-2 py-0.5 text-[11px] font-semibold text-orange-400">
-              DISCOVER
-            </span>
-            <span className="rounded border border-white/20 bg-white/5 px-2 py-0.5 text-[11px] font-semibold text-red-400">
-              Mastercard
-            </span>
-            <span className="flex items-center gap-1 rounded border border-white/20 bg-white/5 px-2 py-0.5 text-[11px] font-semibold text-green-400">
-              <ShieldCheck size={11} />
-              Secure Payment
-            </span>
+            <Image src={apple_pay} alt="Apple Pay" height={20} className="h-5 w-auto border border-border/10 p-1 rounded-sm" />
+            <Image src={visa} alt="VISA" height={20} className="h-5 w-auto border border-border/10 p-1 rounded-sm" />
+            <Image src={discover} alt="Discover" height={20} className="h-5 w-auto border border-border/10 p-1 rounded-sm" />
+            <Image src={mastercard} alt="Mastercard" height={20} className="h-5 w-auto border border-border/10 p-1 rounded-sm" />
           </div>
         </div>
       </div>

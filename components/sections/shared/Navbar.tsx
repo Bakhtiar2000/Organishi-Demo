@@ -4,7 +4,7 @@ import { useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { usePathname } from "next/navigation";
-import { Search, ShoppingCart, User, X, Menu } from "lucide-react";
+import { Search, ShoppingCart, User, Menu } from "lucide-react";
 import { mainRoutes } from "@/route/main.route";
 import { productCategories } from "@/data/categories";
 import {
@@ -15,9 +15,17 @@ import {
   SheetTrigger,
 } from "@/components/ui/sheet";
 import logo from "@/assets/logo/organishi_logo_light_compact.png";
+import imgCabbage from "@/assets/products/cabbage.png";
+import imgCorn from "@/assets/products/corn.png";
+import imgEggplant from "@/assets/products/eggplant.png";
+
+const cartItems = [
+  { id: 1, name: "Fresh Cabbage", qty: 1, price: 45, img: imgCabbage },
+  { id: 2, name: "Sweet Corn", qty: 2, price: 30, img: imgCorn },
+  { id: 3, name: "Eggplant", qty: 1, price: 25, img: imgEggplant },
+];
 
 const Navbar = () => {
-  const [searchOpen, setSearchOpen] = useState(false);
   const [cartOpen, setCartOpen] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
   const pathname = usePathname();
@@ -42,7 +50,7 @@ const Navbar = () => {
                 <Link
                   key={route.href}
                   href={route.href}
-                  className={`relative text-sm font-medium transition-colors ${
+                  className={`relative font-medium transition-colors ${
                     isActive
                       ? "text-primary after:bg-primary after:absolute after:-bottom-0.5 after:left-0 after:h-0.5 after:w-full"
                       : "text-foreground hover:text-primary"
@@ -55,47 +63,70 @@ const Navbar = () => {
           </nav>
 
           {/* Right icons */}
-          <div className="flex items-center gap-1">
-            {/* Search — expands on click */}
-            <div className="flex items-center">
-              <div
-                className={`overflow-hidden transition-all duration-300 ${
-                  searchOpen ? "w-44 opacity-100" : "w-0 opacity-0"
-                }`}
-              >
-                <input
-                  autoFocus={searchOpen}
-                  type="search"
-                  placeholder="Search…"
-                  className="border-border focus:border-primary w-full rounded-lg border bg-white px-3 py-1 text-sm outline-none"
-                />
-              </div>
-              <button
-                onClick={() => setSearchOpen((v) => !v)}
-                className="text-foreground hover:text-primary p-2 transition-colors"
-                aria-label="Toggle search"
-              >
-                {searchOpen ? <X size={19} /> : <Search size={19} />}
-              </button>
+          <div className="flex items-center gap-2">
+            {/* Search bar — always visible on desktop, icon only on mobile */}
+            <div className="relative hidden lg:block">
+              <Search size={15} className="text-muted-foreground absolute top-1/2 left-3 -translate-y-1/2" />
+              <input
+                type="search"
+                placeholder="Search products…"
+                className="border-border focus:border-primary w-52 rounded-lg border bg-white py-1.5 pr-3 pl-8 text-sm outline-none"
+              />
             </div>
+            <button
+              className="text-foreground hover:text-primary p-2 transition-colors lg:hidden"
+              aria-label="Search"
+            >
+              <Search size={19} />
+            </button>
 
             {/* Cart — slides in from right */}
             <Sheet open={cartOpen} onOpenChange={setCartOpen}>
               <SheetTrigger asChild>
                 <button
-                  className="text-foreground hover:text-primary relative p-2 transition-colors"
+                  className="cursor-pointer text-foreground hover:text-primary relative p-2 transition-colors"
                   aria-label="Open cart"
                 >
                   <ShoppingCart size={19} />
                 </button>
               </SheetTrigger>
-              <SheetContent side="right" className="w-80">
-                <SheetHeader>
-                  <SheetTitle>Your Cart</SheetTitle>
+              <SheetContent side="right" className="flex w-80 flex-col">
+                <SheetHeader className="border-b pb-3">
+                  <SheetTitle>Your Cart ({cartItems.length})</SheetTitle>
                 </SheetHeader>
-                <p className="text-muted-foreground mt-6 text-sm">
-                  Your cart is empty.
-                </p>
+
+                <ul className="flex-1 divide-y overflow-y-auto">
+                  {cartItems.map((item) => (
+                    <li key={item.id} className="flex items-center gap-3 py-3">
+                      <div className="bg-muted flex h-16 w-16 shrink-0 items-center justify-center rounded-lg overflow-hidden">
+                        <Image src={item.img} alt={item.name} className="h-full w-full object-cover" />
+                      </div>
+                      <div className="flex-1 min-w-0">
+                        <p className="truncate text-sm font-medium">{item.name}</p>
+                        <p className="text-muted-foreground text-xs">Qty: {item.qty}</p>
+                      </div>
+                      <p className="text-primary shrink-0 text-sm font-semibold">
+                        ৳{item.qty * item.price}
+                      </p>
+                    </li>
+                  ))}
+                </ul>
+
+                <div className="border-t pt-4 space-y-3">
+                  <div className="flex justify-between text-sm font-semibold">
+                    <span>Total</span>
+                    <span className="text-primary">
+                      ৳{cartItems.reduce((s, i) => s + i.qty * i.price, 0)}
+                    </span>
+                  </div>
+                  <Link
+                    href="/cart"
+                    onClick={() => setCartOpen(false)}
+                    className="bg-primary text-primary-foreground hover:bg-primary/90 block w-full rounded-lg py-2 text-center text-sm font-medium transition-colors"
+                  >
+                    View Cart
+                  </Link>
+                </div>
               </SheetContent>
             </Sheet>
 

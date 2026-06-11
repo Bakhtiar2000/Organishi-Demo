@@ -15,7 +15,7 @@ export default function HomePage() {
   return (
     <>
       <Navbar />
-      <main className="min-h-screen">
+      <main className="min-h-screen bg-white">
         <HeroSection />
         <FeaturedCategories />
         <FeaturedProducts />
