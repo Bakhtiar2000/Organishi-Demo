@@ -3,7 +3,7 @@
 import { useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
-import { usePathname } from "next/navigation";
+import { usePathname, useSearchParams } from "next/navigation";
 import { Search, ShoppingCart, User, Menu } from "lucide-react";
 import { mainRoutes } from "@/route/main.route";
 import { categories } from "@/data/categories";
@@ -29,6 +29,8 @@ const Navbar = () => {
   const [cartOpen, setCartOpen] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
   const pathname = usePathname();
+  const searchParams = useSearchParams();
+  const catParam = searchParams.get("cat");
 
   return (
     <>
@@ -173,7 +175,7 @@ const Navbar = () => {
                     {categories.map((cat) => (
                       <Link
                         key={cat.id}
-                        href={`/product-category/${cat.id}`}
+                        href={`/products?cat=${cat.id}`}
                         onClick={() => setMobileOpen(false)}
                         className="text-muted-foreground hover:bg-muted hover:text-foreground block rounded-md px-3 py-2 text-sm transition-colors"
                       >
@@ -192,11 +194,12 @@ const Navbar = () => {
       <div className="bg-white border-b border-border/40 sticky top-0 z-40 border-t shadow-sm">
         <div className="container mx-auto flex items-center gap-0.5 overflow-x-auto px-4 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden py-2">
           {categories.map((cat) => {
-            const isActive = pathname === `/product-category/${cat.id}`;
+            const isActive =
+              pathname === "/products" && catParam === String(cat.id);
             return (
               <Link
                 key={cat.id}
-                href={`/product-category/${cat.id}`}
+                href={`/products?cat=${cat.id}`}
                 className={`whitespace-nowrap rounded-md px-3 text-sm font-medium transition-colors ${
                   isActive
                     ? "text-primary"

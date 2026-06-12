@@ -51,7 +51,7 @@ const News = () => {
                   {post.excerpt}
                 </p>
                 <Link
-                  href={`/blog/${post.id}`}
+                  href={`/blog`}
                   className="text-primary flex items-center gap-1.5 text-sm font-semibold transition-opacity hover:opacity-75"
                 >
                   Read More <ArrowRight size={15} />

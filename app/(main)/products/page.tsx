@@ -1,6 +1,7 @@
 "use client";
 
-import { useState, useMemo, useEffect } from "react";
+import { useState, useMemo, useEffect, Suspense } from "react";
+import { useSearchParams } from "next/navigation";
 import { ChevronUp, ChevronDown, SlidersHorizontal, ArrowRight } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
@@ -42,11 +43,17 @@ const RATING_OPTIONS = [
 const PAGE_SIZE_OPTIONS = [8, 12, 16, 24];
 const MAX_PRICE = Math.ceil(Math.max(...mockProducts.map((p) => p.price)));
 
-export default function ProductsPage() {
+function ProductsContent() {
+  const searchParams = useSearchParams();
+  const catParam = searchParams.get("cat");
+
   const [sortBy, setSortBy] = useState("latest");
   const [priceRange, setPriceRange] = useState<[number, number]>([0, MAX_PRICE]);
   const [minRating, setMinRating] = useState(0);
-  const [selectedCategories, setSelectedCategories] = useState<number[]>([]);
+  const [selectedCategories, setSelectedCategories] = useState<number[]>(() => {
+    const id = catParam ? parseInt(catParam, 10) : NaN;
+    return isNaN(id) ? [] : [id];
+  });
   const [currentPage, setCurrentPage] = useState(1);
   const [pageSize, setPageSize] = useState(8);
   const [openSections, setOpenSections] = useState({
@@ -54,6 +61,13 @@ export default function ProductsPage() {
     price: true,
     rating: true,
   });
+
+  // When navigating to this page with a different ?cat=, update the selection
+  useEffect(() => {
+    const id = catParam ? parseInt(catParam, 10) : NaN;
+    setSelectedCategories(isNaN(id) ? [] : [id]);
+    setCurrentPage(1);
+  }, [catParam]);
 
   const toggle = (key: keyof typeof openSections) =>
     setOpenSections((s) => ({ ...s, [key]: !s[key] }));
@@ -227,24 +241,28 @@ export default function ProductsPage() {
                 </ul>
               )}
             </div>
-            {/* Discount Banner */}
-            <div className="relative mt-6 min-h-20 w-full overflow-hidden rounded-2xl">
-              <Image src={filterBanner} alt="Summer sale" className="object-contain" />
-              <div className="absolute inset-0 flex flex-col items-center gap-1 pt-6">
-                <p className="text-xs uppercase tracking-widest text-foreground/60">
-                  Summer Sale
-                </p>
-                <p className="text-primary text-3xl font-extrabold leading-none my-4">
-                  75%
-                  <span className="text-primary text-xl font-bold ml-2">off</span>
-                </p>
 
+            {/* Discount Banner */}
+            <div className="mt-4 overflow-hidden rounded-xl border bg-white">
+              <div className="p-4 pb-3">
+                <p className="text-xl font-bold leading-snug">
+                  <span className="text-orange-500">79%</span> Discount
+                </p>
+                <p className="text-muted-foreground mt-0.5 text-xs">on your first order</p>
                 <Link
                   href="/products"
-                  className="group border-primary text-primary hover:bg-primary flex items-center gap-2 rounded-full border px-5 py-2 text-sm font-semibold transition-colors hover:text-white"
+                  className="text-primary mt-2 inline-flex items-center gap-1 text-sm font-semibold"
                 >
-                  Shop Now <ArrowRight className="group-hover:translate-x-1 transition-transform duration-300" size={14} />
+                  Shop Now <ArrowRight size={13} />
                 </Link>
+              </div>
+              <div className="relative h-40">
+                <Image
+                  src={filterBanner}
+                  alt="79% discount on first order"
+                  fill
+                  className="object-cover object-top"
+                />
               </div>
             </div>
           </aside>
@@ -353,5 +371,13 @@ export default function ProductsPage() {
       </div>
       <NewsLetter />
     </div>
+  );
+}
+
+export default function ProductsPage() {
+  return (
+    <Suspense fallback={<div className="min-h-screen" />}>
+      <ProductsContent />
+    </Suspense>
   );
 }

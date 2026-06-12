@@ -10,19 +10,41 @@ import visa from "@/assets/cards/visa.png";
 const columns = [
   {
     heading: "Pages",
-    links: ["About", "Shop", "Product", "Track Order"],
+    links: [
+      { label: "About Us", href: "/about" },
+      { label: "Shop", href: "/products" },
+      { label: "Combos", href: "/combos" },
+      { label: "Offers", href: "/offers" },
+      { label: "Blog", href: "/blog" },
+    ],
   },
   {
     heading: "Categories",
-    links: ["Vegetables", "Meat & Fish", "Bread & Bakery", "Beauty & Health"],
+    links: [
+      { label: "Fruits", href: "/products?cat=1" },
+      { label: "Vegetables", href: "/products?cat=2" },
+      { label: "Dairy & Eggs", href: "/products?cat=3" },
+      { label: "Meat & Fish", href: "/products?cat=4" },
+      { label: "Honey", href: "/products?cat=8" },
+    ],
   },
   {
     heading: "Account",
-    links: ["My Account", "Order History", "Shopping Cart", "Wishlist"],
+    links: [
+      { label: "My Account", href: "/" },
+      { label: "Order History", href: "/" },
+      { label: "Shopping Cart", href: "/" },
+      { label: "Wishlist", href: "/" },
+    ],
   },
   {
     heading: "Helps",
-    links: ["Contact", "Faqs", "Terms & Condition", "Privacy Policy"],
+    links: [
+      { label: "Contact", href: "/contact" },
+      { label: "FAQs", href: "/" },
+      { label: "Terms & Condition", href: "/" },
+      { label: "Privacy Policy", href: "/" },
+    ],
   },
 ];
 
@@ -72,13 +94,13 @@ const Footer = () => {
                 {col.heading}
               </h4>
               <ul className="space-y-2.5">
-                {col.links.map((label) => (
-                  <li key={label}>
+                {col.links.map((link) => (
+                  <li key={link.label}>
                     <Link
-                      href="/"
+                      href={link.href}
                       className="text-sm text-gray-400 tracking-tighter leading-tight transition-colors hover:text-primary"
                     >
-                      {label}
+                      {link.label}
                     </Link>
                   </li>
                 ))}
