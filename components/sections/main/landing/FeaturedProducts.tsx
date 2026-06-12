@@ -51,17 +51,20 @@ const FeaturedProducts = () => {
           {/* Col 4: banner card */}
           <div className="relative min-h-64 overflow-hidden rounded-2xl">
             <Image src={productBanner} alt="Summer sale" fill className="object-cover" />
-            <div className="absolute inset-0 flex flex-col items-center justify-center gap-1 p-6 text-center">
+            <div className="absolute inset-0 flex flex-col items-center gap-1 pt-6">
               <p className="text-xs font-semibold uppercase tracking-widest text-foreground/60">
                 Summer Sale
               </p>
-              <p className="text-primary text-6xl font-extrabold leading-none">75%</p>
-              <p className="text-primary mb-3 text-2xl font-bold">off</p>
+              <p className="text-primary text-3xl font-extrabold leading-none">
+                75%
+                <span className="text-primary text-xl font-bold ml-2">off</span>
+              </p>
+
               <Link
                 href="/products"
-                className="border-primary text-primary hover:bg-primary flex items-center gap-2 rounded-full border px-5 py-2 text-sm font-semibold transition-colors hover:text-white"
+                className="group border-primary text-primary hover:bg-primary flex items-center gap-2 rounded-full border px-5 py-2 text-sm font-semibold transition-colors hover:text-white"
               >
-                Shop Now <ArrowRight size={14} />
+                Shop Now <ArrowRight className="group-hover:translate-x-1 transition-transform duration-300" size={14} />
               </Link>
             </div>
           </div>

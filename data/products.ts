@@ -52,7 +52,7 @@ export const mockProducts: TProduct[] = [
     section: "Top rated",
     image: eggplant,
     price: 1.99,
-    rating: 4.6,
+    rating: 2.6,
     stock: 60,
     discount: 0,    
   },
