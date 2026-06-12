@@ -10,6 +10,7 @@ import LatestProducts from "@/components/sections/main/landing/LatestProducts";
 import Video from "@/components/sections/main/landing/Video";
 import News from "@/components/sections/main/landing/News";
 import NewsLetter from "@/components/sections/shared/NewsLetter";
+import WelcomeModal from "@/components/sections/shared/WelcomeModal";
 
 export const metadata: Metadata = {
   title: "Organishi | Fresh & Organic Delivered",
@@ -31,6 +32,7 @@ export default function HomePage() {
         <NewsLetter />
       </main>
       <Footer />
+      <WelcomeModal />
     </>
   );
 }

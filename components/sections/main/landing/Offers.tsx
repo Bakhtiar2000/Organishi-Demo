@@ -12,8 +12,10 @@ const SALE_END = new Date("2026-06-20T23:59:59");
 
 const pad = (n: number) => String(n).padStart(2, "0");
 
-function useCountdown(target: Date) {
-  const calc = () => {
+type Countdown = { days: number; hours: number; mins: number; secs: number };
+
+function useCountdown(target: Date): Countdown {
+  const calc = (): Countdown => {
     const diff = Math.max(0, target.getTime() - Date.now());
     return {
       days: Math.floor(diff / 86_400_000),
@@ -23,15 +25,17 @@ function useCountdown(target: Date) {
     };
   };
 
-  const [time, setTime] = useState(calc);
+  // null on server → same null on client initial render → no hydration mismatch
+  const [time, setTime] = useState<Countdown | null>(null);
 
   useEffect(() => {
+    setTime(calc());
     const id = setInterval(() => setTime(calc()), 1000);
     return () => clearInterval(id);
-  // eslint-disable-next-line react-hooks/exhaustive-deps
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  return time;
+  return time ?? { days: 0, hours: 0, mins: 0, secs: 0 };
 }
 
 const ShopNowBtn = () => (

@@ -20,19 +20,22 @@ const PageBanner = () => {
     };
   };
 
-  const [time, setTime] = useState(calc);
+  // null on server → same null on client initial render → no hydration mismatch
+  const [time, setTime] = useState<ReturnType<typeof calc> | null>(null);
 
   useEffect(() => {
+    setTime(calc());
     const id = setInterval(() => setTime(calc()), 1000);
     return () => clearInterval(id);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
+  const t = time ?? { days: 0, hours: 0, mins: 0, secs: 0 };
   const units = [
-    { value: time.days, label: "DAYS" },
-    { value: time.hours, label: "HOURS" },
-    { value: time.mins, label: "MINS" },
-    { value: time.secs, label: "SECS" },
+    { value: t.days, label: "DAYS" },
+    { value: t.hours, label: "HOURS" },
+    { value: t.mins, label: "MINS" },
+    { value: t.secs, label: "SECS" },
   ];
 
   return (
