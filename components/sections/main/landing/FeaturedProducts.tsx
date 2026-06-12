@@ -1,42 +1,70 @@
+import Image from "next/image";
 import Link from "next/link";
-import ProductCard from "@/components/custom/ProductCard";
-import { mockProducts } from "@/data/products";
 import { ArrowRight } from "lucide-react";
+import ProductCard from "@/components/custom/ProductCard";
+import ProductCard2 from "@/components/custom/ProductCard2";
+import { mockProducts } from "@/data/products";
+import productBanner from "@/assets/products/banner/product_banner.png";
+
+const bottomSections = [
+  { label: "Hot Deals", key: "Hot Deals" as const },
+  { label: "Best Seller", key: "Best Sellers" as const },
+  { label: "Top Rated", key: "Top rated" as const },
+] satisfies { label: string; key: NonNullable<(typeof mockProducts)[number]["section"]> }[];
 
 const FeaturedProducts = () => {
-  const featured = mockProducts.slice(0, 4);
+  const featured = mockProducts.slice(0, 5);
 
   return (
-    <section className="bg-muted/30 py-16">
+    <section className="py-16">
       <div className="container">
-        <div className="mb-10 flex items-end justify-between">
-          <div>
-            <h2 className="title-text mb-3">Featured Products</h2>
-            <p className="description-text max-w-lg">
-              Hand-picked organic favorites, loved by our community.
-            </p>
-          </div>
-          <Link
-            href="/products"
-            className="text-primary hover:text-primary/80 hidden items-center gap-1 text-sm font-medium transition-colors sm:flex"
-          >
-            View all <ArrowRight size={16} />
-          </Link>
+        {/* Heading */}
+        <div className="mb-10 text-center">
+          <h2 className="text-2xl font-bold">Featured Products</h2>
+          <div className="bg-primary mx-auto mt-2 h-1 w-10 rounded-full" />
         </div>
 
-        <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4">
+        {/* Top row — 5 ProductCards */}
+        <div className="mb-10 grid grid-cols-2 gap-4 sm:grid-cols-3 lg:grid-cols-5">
           {featured.map((product) => (
             <ProductCard key={product.id} product={product} />
           ))}
         </div>
 
-        <div className="mt-8 text-center sm:hidden">
-          <Link
-            href="/products"
-            className="bg-primary text-primary-foreground hover:bg-primary/90 inline-flex items-center gap-2 rounded-full px-6 py-2.5 text-sm font-medium transition-colors"
-          >
-            View all products <ArrowRight size={16} />
-          </Link>
+        {/* Bottom row — 4 cols */}
+        <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-4">
+          {/* Cols 1–3: section groups using ProductCard2 */}
+          {bottomSections.map(({ label, key }) => {
+            const items = mockProducts.filter((p) => p.section === key).slice(0, 3);
+            return (
+              <div key={key}>
+                <h3 className="mb-3 text-base font-bold">{label}</h3>
+                <div className="space-y-2">
+                  {items.map((product) => (
+                    <ProductCard2 key={product.id} product={product} />
+                  ))}
+                </div>
+              </div>
+            );
+          })}
+
+          {/* Col 4: banner card */}
+          <div className="relative min-h-64 overflow-hidden rounded-2xl">
+            <Image src={productBanner} alt="Summer sale" fill className="object-cover" />
+            <div className="absolute inset-0 flex flex-col items-center justify-center gap-1 p-6 text-center">
+              <p className="text-xs font-semibold uppercase tracking-widest text-foreground/60">
+                Summer Sale
+              </p>
+              <p className="text-primary text-6xl font-extrabold leading-none">75%</p>
+              <p className="text-primary mb-3 text-2xl font-bold">off</p>
+              <Link
+                href="/products"
+                className="border-primary text-primary hover:bg-primary flex items-center gap-2 rounded-full border px-5 py-2 text-sm font-semibold transition-colors hover:text-white"
+              >
+                Shop Now <ArrowRight size={14} />
+              </Link>
+            </div>
+          </div>
         </div>
       </div>
     </section>

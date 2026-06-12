@@ -1,5 +1,5 @@
 import { TProduct } from "@/types/product.type";
-import big_potato from "@/assets/products/big-potato.jpg";
+import big_potato from "@/assets/products/big_potato.png";
 import cabbage from "@/assets/products/cabbage.png";
 import corn from "@/assets/products/corn.png";
 import eggplant from "@/assets/products/eggplant.png";
@@ -15,6 +15,7 @@ export const mockProducts: TProduct[] = [
   {
     id: 1,
     name: "Big Potato",
+    categoryId: 1,
     section: "All",
     image: big_potato,
     price: 4.99,
@@ -25,6 +26,7 @@ export const mockProducts: TProduct[] = [
   {
     id: 2,
     name: "Fresh Cabbage",
+    categoryId: 1,
     section: "Hot Deals",
     image: cabbage,
     price: 2.49,
@@ -35,6 +37,7 @@ export const mockProducts: TProduct[] = [
   {
     id: 3,
     name: "Sweet Corn",
+    categoryId: 1,
     section: "Best Sellers",
     image: corn,
     price: 3.99,
@@ -45,6 +48,7 @@ export const mockProducts: TProduct[] = [
   {
     id: 4,
     name: "Eggplant",
+    categoryId: 1,
     section: "Top rated",
     image: eggplant,
     price: 1.99,
@@ -55,6 +59,7 @@ export const mockProducts: TProduct[] = [
   {
     id: 5,
     name: "Green Apple",
+    categoryId: 1,
     section: "Best Sellers",
     image: green_apple,
     price: 0.99,
@@ -65,6 +70,7 @@ export const mockProducts: TProduct[] = [
   {
     id: 6,
     name: "Red Tomato",
+    categoryId: 1,
     section: "Hot Deals",
     image: red_tomato,
     price: 1.49,
@@ -75,6 +81,7 @@ export const mockProducts: TProduct[] = [
   {
     id: 7,
     name: "Green Chili",
+     categoryId: 1,
     section: "Top rated",
     image: green_chili,
     price: 0.79,
@@ -85,6 +92,7 @@ export const mockProducts: TProduct[] = [
   {
     id: 8,
     name: "Green Lettuce",
+     categoryId: 1,
     section: "All",
     image: green_lettuce,
     price: 1.29,
@@ -95,6 +103,7 @@ export const mockProducts: TProduct[] = [
   {
     id: 9,
     name: "Indian Malta",
+     categoryId: 1,
     section: "Best Sellers",
     image: indian_malta,
     price: 0.89,
@@ -105,6 +114,7 @@ export const mockProducts: TProduct[] = [
   {
     id: 10,
     name: "Red Capsicum",
+     categoryId: 1,
     section: "Hot Deals",
     image: red_capsicum,
     price: 1.99,
@@ -115,6 +125,7 @@ export const mockProducts: TProduct[] = [
   {
     id: 11,
     name: "Fresh Cauliflower",
+     categoryId: 1,
     section: "Top rated",
     image: fresh_cauliflower,
     price: 2.49,

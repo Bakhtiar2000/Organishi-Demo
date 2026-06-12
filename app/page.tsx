@@ -6,6 +6,7 @@ import FeaturedCategories from "@/components/sections/main/landing/FeaturedCateg
 import FeaturedProducts from "@/components/sections/main/landing/FeaturedProducts";
 import WhyOrganic from "@/components/sections/main/landing/WhyOrganic";
 import Testimonials from "@/components/sections/main/landing/Testimonials";
+import Offers from "@/components/sections/main/landing/Offers";
 
 export const metadata: Metadata = {
   title: "Organishi | Fresh & Organic Delivered",
@@ -17,8 +18,9 @@ export default function HomePage() {
       <Navbar />
       <main className="min-h-screen bg-white">
         <HeroSection />
-        <FeaturedCategories />
         <FeaturedProducts />
+        <Offers />
+        <FeaturedCategories />
         <WhyOrganic />
         <Testimonials />
       </main>

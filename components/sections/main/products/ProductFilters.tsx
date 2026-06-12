@@ -1,6 +1,6 @@
 "use client";
 
-import { organicCategories } from "@/data/categories";
+import { categories } from "@/data/categories";
 import { useState } from "react";
 
 const ProductFilters = () => {
@@ -27,7 +27,7 @@ const ProductFilters = () => {
             />
             All Categories
           </label>
-          {organicCategories.map((cat) => (
+          {categories.map((cat) => (
             <label key={cat.slug} className="flex cursor-pointer items-center gap-2 text-sm">
               <input
                 type="radio"

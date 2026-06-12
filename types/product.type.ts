@@ -1,6 +1,7 @@
 export interface TProduct {
   id: number | string;
   name: string;
+  categoryId?: number;
   section?: 'Hot Deals' | 'Best Sellers' | 'Top rated' | 'All';
   image: any;
   price: number;

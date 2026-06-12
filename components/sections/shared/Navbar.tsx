@@ -6,7 +6,7 @@ import Image from "next/image";
 import { usePathname } from "next/navigation";
 import { Search, ShoppingCart, User, Menu } from "lucide-react";
 import { mainRoutes } from "@/route/main.route";
-import { productCategories } from "@/data/categories";
+import { categories } from "@/data/categories";
 import {
   Sheet,
   SheetContent,
@@ -170,10 +170,10 @@ const Navbar = () => {
                     <p className="text-muted-foreground mb-2 px-3 text-xs font-semibold uppercase tracking-widest">
                       Categories
                     </p>
-                    {productCategories.map((cat) => (
+                    {categories.map((cat) => (
                       <Link
-                        key={cat.slug}
-                        href={`/product-category/${cat.slug}`}
+                        key={cat.id}
+                        href={`/product-category/${cat.id}`}
                         onClick={() => setMobileOpen(false)}
                         className="text-muted-foreground hover:bg-muted hover:text-foreground block rounded-md px-3 py-2 text-sm transition-colors"
                       >
@@ -191,16 +191,16 @@ const Navbar = () => {
       {/* ── Bottom Category Nav — sticky ── */}
       <div className="bg-white border-b border-border/40 sticky top-0 z-40 border-t shadow-sm">
         <div className="container mx-auto flex items-center gap-0.5 overflow-x-auto px-4 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden py-2">
-          {productCategories.map((cat) => {
-            const isActive = pathname === `/product-category/${cat.slug}`;
+          {categories.map((cat) => {
+            const isActive = pathname === `/product-category/${cat.id}`;
             return (
               <Link
-                key={cat.slug}
-                href={`/product-category/${cat.slug}`}
+                key={cat.id}
+                href={`/product-category/${cat.id}`}
                 className={`whitespace-nowrap rounded-md px-3 text-sm font-medium transition-colors ${
                   isActive
                     ? "text-primary"
-                    : "text-foreground hover:bg-primary/10 hover:text-primary"
+                    : "text-foreground hover:text-primary duration-300"
                 }`}
               >
                 {cat.name}

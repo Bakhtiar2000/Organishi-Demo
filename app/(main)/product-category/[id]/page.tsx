@@ -1,17 +1,17 @@
-import { productCategories } from "@/data/categories";
+import { categories } from "@/data/categories";
 import { notFound } from "next/navigation";
 
 export function generateStaticParams() {
-  return productCategories.map((cat) => ({ slug: cat.slug }));
+  return categories.map((cat) => ({ slug: cat.id }));
 }
 
 export default async function ProductCategoryPage({
   params,
 }: {
-  params: Promise<{ slug: string }>;
+  params: Promise<{ id: string }>;
 }) {
-  const { slug } = await params;
-  const category = productCategories.find((cat) => cat.slug === slug);
+  const { id } = await params;
+  const category = categories.find((cat) => cat.id.toString() === id);
 
   if (!category) notFound();
 

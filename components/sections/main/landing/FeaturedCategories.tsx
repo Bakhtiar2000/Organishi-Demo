@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { organicCategories } from "@/data/categories";
+import { categories } from "@/data/categories";
 
 const FeaturedCategories = () => {
   return (
@@ -12,7 +12,7 @@ const FeaturedCategories = () => {
       </div>
 
       <div className="grid grid-cols-2 gap-4 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6">
-        {organicCategories.map((cat) => (
+        {categories.map((cat) => (
           <Link
             key={cat.slug}
             href={`/products?category=${cat.slug}`}
