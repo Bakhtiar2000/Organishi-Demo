@@ -50,7 +50,7 @@ const FeaturedProducts = () => {
 
           {/* Col 4: banner card */}
           <div className="relative min-h-64 overflow-hidden rounded-2xl">
-            <Image src={productBanner} alt="Summer sale" fill className="object-cover" />
+            <Image src={productBanner} alt="Summer sale" fill className="object-contain" />
             <div className="absolute inset-0 flex flex-col items-center gap-1 pt-6">
               <p className="text-xs font-semibold uppercase tracking-widest text-foreground/60">
                 Summer Sale

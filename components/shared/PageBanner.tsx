@@ -36,37 +36,52 @@ const PageBanner = () => {
   ];
 
   return (
-    <div className="relative h-44 overflow-hidden rounded-2xl">
-      <Image src={bannerImg} alt="Sale banner" fill className="object-cover object-right-bottom" />
-      <div className="absolute inset-0 bg-linear-to-r from-blue-500 via-blue-500/90 to-transparent" />
+    <div className="relative h-52 overflow-hidden rounded-2xl">
+      <Image src={bannerImg} alt="Sale banner" fill className="object-cover" />
+      {/* subtle left-to-right blue fade */}
+      <div className="absolute inset-0 bg-linear-to-r from-sky-400/80 via-sky-300/40 to-transparent" />
 
-      <div className="relative flex h-full flex-col justify-center px-8 text-white">
-        <p className="mb-1 text-[11px] font-semibold uppercase tracking-widest text-white/70">
-          Best Deals
-        </p>
-        <h2 className="mb-3 text-2xl font-bold leading-tight">Sale of the Month</h2>
+      {/* Content row */}
+      <div className="absolute inset-0 flex items-center justify-between px-10">
+        {/* Left — text */}
+        <div className="text-white">
+          <p className="mb-1 text-xs font-semibold uppercase tracking-widest text-white/80">
+            Best Deals
+          </p>
+          <h2 className="mb-3 text-4xl font-bold leading-tight">Sale of the Month</h2>
 
-        {/* Countdown */}
-        <div className="mb-4 flex items-end gap-2">
-          {units.map(({ value, label }, i) => (
-            <div key={label} className="flex items-end gap-2">
-              <div className="flex flex-col items-center">
-                <span className="text-xl font-bold tabular-nums leading-none">{pad(value)}</span>
-                <span className="mt-0.5 text-[9px] tracking-widest text-white/60">{label}</span>
+          {/* Countdown */}
+          <div className="mb-4 flex items-start gap-1">
+            {units.map(({ value, label }, i) => (
+              <div key={label} className="flex items-start">
+                <div className="flex flex-col items-center min-w-[44px]">
+                  <span className="text-2xl font-bold leading-none" style={{ fontVariantNumeric: "tabular-nums" }}>
+                    {pad(value)}
+                  </span>
+                  <span className="mt-1 text-[9px] font-semibold tracking-widest text-white/70">
+                    {label}
+                  </span>
+                </div>
+                {i < units.length - 1 && (
+                  <span className="mt-0.5 px-0.5 text-xl font-bold text-white/60">:</span>
+                )}
               </div>
-              {i < units.length - 1 && (
-                <span className="mb-3.5 text-sm text-white/50">:</span>
-              )}
-            </div>
-          ))}
+            ))}
+          </div>
+
+          <Link
+            href="/products"
+            className="group inline-flex items-center gap-2 rounded-full border border-white px-5 py-2 text-sm font-semibold backdrop-blur-sm transition-colors bg-white text-foreground"
+          >
+            Shop now <ArrowRight className="group-hover:translate-x-1 transition-transform duration-300" size={14} />
+          </Link>
         </div>
 
-        <Link
-          href="/products"
-          className="flex w-fit items-center gap-2 rounded-full border border-white px-4 py-1.5 text-xs font-semibold transition-colors hover:bg-white hover:text-foreground"
-        >
-          Shop now <ArrowRight size={13} />
-        </Link>
+        {/* Right — orange badge */}
+        <div className="flex h-20 w-20 flex-col items-center justify-center rounded-full bg-orange-400 text-white shadow-lg">
+          <span className="text-2xl font-extrabold leading-none">56%</span>
+          <span className="text-xs font-semibold tracking-wider">OFF</span>
+        </div>
       </div>
     </div>
   );

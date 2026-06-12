@@ -1,5 +1,6 @@
 import Image from "next/image";
 import { testimonials } from "@/data/testimonials";
+import InvertedComma from "@/assets/inverted_comma.png";
 
 const Testimonials = () => {
   return (
@@ -19,8 +20,8 @@ const Testimonials = () => {
           {testimonials.map((t) => (
             <div key={t.id} className="flex flex-col items-center">
               {/* Quote card */}
-              <div className="w-full rounded-2xl bg-white p-6 shadow-sm">
-                <p className="text-primary text-5xl font-serif leading-none">&ldquo;</p>
+              <div className="w-full rounded-2xl bg-white p-4 flex flex-col items-center justify-center gap-4 shadow-sm">
+                <Image src={InvertedComma} alt="Inverted comma" className="text-primary text-5xl font-serif leading-none" />
                 <p className="text-center text-sm text-foreground/80">
                   {t.content}
                 </p>
