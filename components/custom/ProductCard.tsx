@@ -18,12 +18,12 @@ const ProductCard = ({ product }: ProductCardProps) => {
     <div className="group relative overflow-hidden rounded-2xl border bg-white shadow-sm transition-all duration-300 hover:-translate-y-1 hover:border-primary hover:shadow-md">
       {/* Image area */}
       <Link href={`/products/${product.id}`} className="block">
-        <div className="relative h-48 w-full overflow-hidden bg-gray-50">
+        <div className="relative h-48 w-full overflow-hidden bg-white">
           <Image
             src={product.image}
             alt={product.name}
             fill
-            className="object-contain p-4 transition-transform duration-300 group-hover:scale-105"
+            className="object-cover transition-transform duration-300 group-hover:scale-105"
           />
 
           {/* Sale badge — top left */}
