@@ -22,6 +22,7 @@ import { mockProducts } from "@/data/products";
 import { categories } from "@/data/categories";
 import { Checkbox } from "@/components/ui/checkbox";
 import filterBanner from "@/assets/banner/filter_discount_bannar.png";
+import NewsLetter from "@/components/sections/shared/NewsLetter";
 
 const SORT_OPTIONS = [
   { value: "latest", label: "Latest" },
@@ -293,7 +294,7 @@ export default function ProductsPage() {
 
             {/* Grid */}
             {paginated.length > 0 ? (
-              <div className="grid grid-cols-2 gap-4 sm:grid-cols-3 xl:grid-cols-4">
+              <div className="grid grid-cols-2 gap-4 sm:grid-cols-3 2xl:grid-cols-4">
                 {paginated.map((product) => (
                   <ProductCard key={product.id} product={product} />
                 ))}
@@ -350,6 +351,7 @@ export default function ProductsPage() {
           </div>
         </div>
       </div>
+      <NewsLetter />
     </div>
   );
 }

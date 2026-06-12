@@ -14,10 +14,10 @@ const columns = [
   },
   {
     heading: "Categories",
-    links: ["Fruit & Vegetables", "Meat & Fish", "Bread & Bakery", "Beauty & Health"],
+    links: ["Vegetables", "Meat & Fish", "Bread & Bakery", "Beauty & Health"],
   },
   {
-    heading: "My Account",
+    heading: "Account",
     links: ["My Account", "Order History", "Shopping Cart", "Wishlist"],
   },
   {
@@ -76,7 +76,7 @@ const Footer = () => {
                   <li key={label}>
                     <Link
                       href="/"
-                      className="text-sm text-gray-400 transition-colors hover:text-primary"
+                      className="text-sm text-gray-400 tracking-tighter leading-tight transition-colors hover:text-primary"
                     >
                       {label}
                     </Link>
