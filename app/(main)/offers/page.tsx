@@ -96,9 +96,9 @@ export default function OffersPage() {
           </p>
           <Link
             href="/products"
-            className="inline-flex items-center gap-2 rounded-full bg-white px-6 py-2.5 text-sm font-semibold text-primary hover:bg-gray-100 transition-colors"
+            className="group inline-flex items-center gap-2 rounded-full bg-white px-6 py-2.5 text-sm font-semibold text-primary hover:bg-gray-100 transition-colors"
           >
-            View All Products <ArrowRight size={14} />
+            View All Products <ArrowRight className="group-hover:translate-x-1 transition-transform duration-300" size={14} />
           </Link>
         </div>
       </div>

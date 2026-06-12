@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { Suspense, useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { usePathname, useSearchParams } from "next/navigation";
@@ -25,20 +25,63 @@ const cartItems = [
   { id: 3, name: "Eggplant", qty: 1, price: 25, img: imgEggplant },
 ];
 
-const Navbar = () => {
-  const [cartOpen, setCartOpen] = useState(false);
-  const [mobileOpen, setMobileOpen] = useState(false);
+// Isolated component — only part that needs useSearchParams
+function CategoryBar() {
   const pathname = usePathname();
   const searchParams = useSearchParams();
   const catParam = searchParams.get("cat");
 
   return (
+    <div className="container mx-auto flex items-center gap-0.5 overflow-x-auto px-4 py-2 scrollbar-none [&::-webkit-scrollbar]:hidden">
+      {categories.map((cat) => {
+        const isActive = pathname === "/products" && catParam === String(cat.id);
+        return (
+          <Link
+            key={cat.id}
+            href={`/products?cat=${cat.id}`}
+            className={`whitespace-nowrap rounded-md px-3 text-sm font-medium transition-colors ${
+              isActive
+                ? "text-primary"
+                : "text-foreground hover:text-primary duration-300"
+            }`}
+          >
+            {cat.name}
+          </Link>
+        );
+      })}
+    </div>
+  );
+}
+
+// Fallback renders the same links without active-state highlighting (no searchParams needed)
+function CategoryBarFallback() {
+  return (
+    <div className="container mx-auto flex items-center gap-0.5 overflow-x-auto px-4 py-2 scrollbar-none [&::-webkit-scrollbar]:hidden">
+      {categories.map((cat) => (
+        <Link
+          key={cat.id}
+          href={`/products?cat=${cat.id}`}
+          className="whitespace-nowrap rounded-md px-3 text-sm font-medium text-foreground"
+        >
+          {cat.name}
+        </Link>
+      ))}
+    </div>
+  );
+}
+
+const Navbar = () => {
+  const [cartOpen, setCartOpen] = useState(false);
+  const [mobileOpen, setMobileOpen] = useState(false);
+  const pathname = usePathname();
+
+  return (
     <>
       {/* ── Top Nav ── */}
       <div className="w-full bg-white">
-        <div className="container mx-auto  flex items-center justify-between px-4 py-2">
+        <div className="container mx-auto flex items-center justify-between px-4 py-2">
           {/* Logo */}
-          <Link href="/" className="flex-shrink-0">
+          <Link href="/" className="shrink-0">
             <Image src={logo} alt="Organishi" className="h-16 w-auto" />
           </Link>
 
@@ -191,26 +234,10 @@ const Navbar = () => {
       </div>
 
       {/* ── Bottom Category Nav — sticky ── */}
-      <div className="bg-white border-b border-border/40 sticky top-0 z-40 border-t shadow-sm">
-        <div className="container mx-auto flex items-center gap-0.5 overflow-x-auto px-4 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden py-2">
-          {categories.map((cat) => {
-            const isActive =
-              pathname === "/products" && catParam === String(cat.id);
-            return (
-              <Link
-                key={cat.id}
-                href={`/products?cat=${cat.id}`}
-                className={`whitespace-nowrap rounded-md px-3 text-sm font-medium transition-colors ${
-                  isActive
-                    ? "text-primary"
-                    : "text-foreground hover:text-primary duration-300"
-                }`}
-              >
-                {cat.name}
-              </Link>
-            );
-          })}
-        </div>
+      <div className="sticky top-0 z-40 border-t border-b border-border/40 bg-white shadow-sm">
+        <Suspense fallback={<CategoryBarFallback />}>
+          <CategoryBar />
+        </Suspense>
       </div>
     </>
   );

@@ -136,13 +136,10 @@ export default function BlogPage() {
               </div>
               <Link
                 href="#"
-                className="group/btn mt-5 inline-flex w-fit items-center gap-1.5 rounded-full bg-primary px-5 py-2 text-sm font-semibold text-white hover:bg-primary/90 transition-colors"
+                className="group mt-5 inline-flex w-fit items-center gap-1.5 rounded-full bg-primary px-5 py-2 text-sm font-semibold text-white hover:bg-primary/90 transition-colors"
               >
                 Read Article{" "}
-                <ArrowRight
-                  size={13}
-                  className="transition-transform duration-300 group-hover/btn:translate-x-1"
-                />
+                <ArrowRight className="group-hover:translate-x-1 transition-transform duration-300" size={16} />
               </Link>
             </div>
           </div>
@@ -193,9 +190,9 @@ export default function BlogPage() {
                 </div>
                 <Link
                   href="#"
-                  className="text-primary mt-3 inline-flex items-center gap-1 text-xs font-semibold hover:underline"
+                  className="group text-primary mt-3 inline-flex items-center gap-1 text-xs font-semibold hover:underline"
                 >
-                  Read More <ArrowRight size={11} />
+                  Read More <ArrowRight className="group-hover:translate-x-1 transition-transform duration-300" size={16} />
                 </Link>
               </div>
             </article>

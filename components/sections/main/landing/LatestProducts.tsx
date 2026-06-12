@@ -17,9 +17,9 @@ const LatestProducts = () => {
           </div>
           <Link
             href="/products"
-            className="text-primary flex items-center gap-1 text-sm font-semibold transition-colors hover:opacity-80"
+            className="group text-primary flex items-center gap-1 text-sm font-semibold transition-colors hover:opacity-80"
           >
-            View All <ArrowRight size={15} />
+            View All <ArrowRight className="group-hover:translate-x-1 transition-transform duration-300" size={15} />
           </Link>
         </div>
 

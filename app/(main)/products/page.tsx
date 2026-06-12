@@ -251,9 +251,9 @@ function ProductsContent() {
                 <p className="text-muted-foreground mt-0.5 text-xs">on your first order</p>
                 <Link
                   href="/products"
-                  className="text-primary mt-2 inline-flex items-center gap-1 text-sm font-semibold"
+                  className="group text-primary mt-2 inline-flex items-center gap-1 text-sm font-semibold"
                 >
-                  Shop Now <ArrowRight size={13} />
+                  Shop Now <ArrowRight className="group-hover:translate-x-1 transition-transform duration-300" size={16} />
                 </Link>
               </div>
               <div className="relative h-40">

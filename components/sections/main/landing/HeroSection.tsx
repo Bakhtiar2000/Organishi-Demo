@@ -54,7 +54,7 @@ const HeroSection = () => {
               href="/products"
               className="group flex w-fit items-center gap-2 rounded-lg border border-white px-5 py-2 text-sm text-white transition-colors hover:bg-white hover:text-foreground"
             >
-              Shop now <ArrowRight className="group-hover:animate-bounce ml-2" size={16} />
+              Shop now <ArrowRight className="group-hover:translate-x-1 transition-transform duration-300" size={16} />
             </Link>
           </div>
         </div>
@@ -91,9 +91,9 @@ const HeroSection = () => {
             </h3>
             <Link
               href="/products"
-              className="flex items-center gap-1 text-sm font-semibold text-white hover:underline"
+              className="group flex items-center gap-1 text-sm font-semibold text-white hover:underline"
             >
-              Shop Now &rarr;
+              Shop Now <ArrowRight className="group-hover:translate-x-1 transition-transform duration-300" size={16} />
             </Link>
           </div>
         </div>

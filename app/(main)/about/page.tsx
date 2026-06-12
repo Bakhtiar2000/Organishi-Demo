@@ -98,9 +98,9 @@ export default function AboutPage() {
             </p>
             <Link
               href="/products"
-              className="inline-flex items-center gap-2 rounded-full bg-primary px-6 py-2.5 text-sm font-semibold text-white hover:bg-primary/90 transition-colors"
+              className="group inline-flex items-center gap-2 rounded-full bg-primary px-6 py-2.5 text-sm font-semibold text-white hover:bg-primary/90 transition-colors"
             >
-              Shop Our Products <ArrowRight size={14} />
+              Shop Our Products <ArrowRight className="group-hover:translate-x-1 transition-transform duration-300" size={16} />
             </Link>
           </div>
           <div className="grid grid-cols-2 gap-3">

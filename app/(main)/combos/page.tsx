@@ -158,9 +158,9 @@ export default function CombosPage() {
 
                   <Link
                     href="/products"
-                    className="mt-3 flex items-center justify-center gap-1 rounded-full bg-primary px-4 py-2 text-sm font-semibold text-white hover:bg-primary/90 transition-colors"
+                    className="group mt-3 flex items-center justify-center gap-1 rounded-full bg-primary px-4 py-2 text-sm font-semibold text-white hover:bg-primary/90 transition-colors"
                   >
-                    Add Combo <ArrowRight size={13} />
+                    Add Combo <ArrowRight className="group-hover:translate-x-1 transition-transform duration-300" size={16} />
                   </Link>
                 </div>
               </div>
