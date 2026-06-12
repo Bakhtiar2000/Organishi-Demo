@@ -7,9 +7,10 @@ import fresh_cauliflower from "@/assets/products/fresh_cauliflower.png";
 import green_apple from "@/assets/products/green_apple.png";
 import green_chili from "@/assets/products/green_chili.png";
 import green_lettuce from "@/assets/products/green_lettuce.png";
-import indian_malta from "@/assets/products/indian_malta.png";
+import mango from "@/assets/products/mango.png";
 import red_capsicum from "@/assets/products/red_capsicum.png";
 import red_tomato from "@/assets/products/red_tomato.png";
+import lady_finger from "@/assets/products/lady_finger.png";
 
 export const mockProducts: TProduct[] = [
   {
@@ -32,7 +33,7 @@ export const mockProducts: TProduct[] = [
     price: 2.49,
     rating: 4.5,
     stock: 50,
-    discount: 10,
+    discount: 0,
   },
   {
     id: 3,
@@ -65,7 +66,7 @@ export const mockProducts: TProduct[] = [
     price: 0.99,
     rating: 4.9,
     stock: 200,
-    discount: 15,    
+    discount: 0,    
   },
   {
     id: 6,
@@ -102,10 +103,10 @@ export const mockProducts: TProduct[] = [
   },
   {
     id: 9,
-    name: "Indian Malta",
+    name: "Mango",
      categoryId: 1,
     section: "Best Sellers",
-    image: indian_malta,
+    image: mango,
     price: 0.89,
     rating: 4.8,
     stock: 110,
@@ -120,7 +121,7 @@ export const mockProducts: TProduct[] = [
     price: 1.99,
     rating: 4.5,
     stock: 70,
-    discount: 15, 
+    discount: 0, 
   },
   {
     id: 11,
@@ -131,6 +132,17 @@ export const mockProducts: TProduct[] = [
     price: 2.49,
     rating: 4.8,
     stock: 70,
-    discount: 15, 
+    discount: 0, 
+  },
+  {
+    id: 12,
+    name: "Lady Finger",
+     categoryId: 1,
+    section: "Top rated",
+    image: lady_finger,
+    price: 1.49,
+    rating: 3.5,
+    stock: 0,
+    discount: 0, 
   }
 ];
