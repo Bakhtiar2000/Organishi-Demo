@@ -13,23 +13,26 @@ export interface TTestimonial {
 export const testimonials: TTestimonial[] = [
   {
     id: 1,
-    name: "Guy Hawkins",
-    role: "CEO, Company",
+    name: "Amira Rahman",
+    role: "Customer",
     image: person1,
-    content: "This is the best organic produce I've ever had. The quality is unmatched."
+    content:
+      "Organishi has completely transformed how my family eats. The vegetables are incredibly fresh — you can actually taste the difference from regular market produce. Delivery is always on time!",
   },
   {
     id: 2,
-    name: "Jenny Wilson",
-    role: "Marketing Director",
+    name: "Karim Hassan",
+    role: "Customer",
     image: person2,
-    content: "I love the convenience of having fresh, organic produce delivered to my doorstep."
+    content:
+      "I was skeptical about online grocery at first, but Organishi won me over. The honey is pure gold — literally the best I've ever tasted. The organic certification gives me real peace of mind.",
   },
   {
     id: 3,
-    name: "Kathryn Murphy",
-    role: "Nutritionist",
+    name: "Nadia Islam",
+    role: "Customer",
     image: person3,
-    content: "As a nutritionist, I can confidently recommend these products for their health benefits."
-  }
+    content:
+      "As a nutritionist, I only recommend verified organic foods. Organishi meets every standard I look for. My clients love the quality and I love how easy the ordering process is.",
+  },
 ];
