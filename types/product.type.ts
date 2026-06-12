@@ -1,16 +1,12 @@
 export interface TProduct {
-  id: string;
+  id: number | string;
   name: string;
-  category: string;
-  emoji: string;
+  section?: 'Hot Deals' | 'Best Sellers' | 'Top rated' | 'All';
+  image: any;
   price: number;
-  unit?: string;
-  rating: number;
-  reviewCount: number;
-  isOrganic: boolean;
-  description?: string;
-  images?: string[];
+  rating: number;            
   stock?: number;
+  discount?: number;
 }
 
 export interface TProductQuery {

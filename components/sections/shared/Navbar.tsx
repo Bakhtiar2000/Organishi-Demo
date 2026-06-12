@@ -199,7 +199,7 @@ const Navbar = () => {
                 href={`/product-category/${cat.slug}`}
                 className={`whitespace-nowrap rounded-md px-3 text-sm font-medium transition-colors ${
                   isActive
-                    ? "bg-primary text-primary-foreground"
+                    ? "text-primary"
                     : "text-foreground hover:bg-primary/10 hover:text-primary"
                 }`}
               >
